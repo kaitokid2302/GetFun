@@ -6,6 +6,7 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsCompose)
     alias(libs.plugins.kotlinxSerialization)
+    id("kotlin-kapt")
 }
 
 kotlin {
@@ -16,7 +17,9 @@ kotlin {
             }
         }
     }
-    
+
+
+
     jvm("desktop")
     
     sourceSets {
@@ -40,14 +43,18 @@ kotlin {
             implementation(libs.ktor.serialization.kotlinx.json)
             implementation(libs.moko.mvvm.core)
             implementation(libs.moko.mvvm.compose)
-            implementation("com.russhwolf:multiplatform-settings:1.1.1")
+            implementation("io.github.xxfast:kstore:0.7.1")
+
+
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
             implementation(libs.ktor.client.okhttp)
+
         }
     }
 }
+
 
 android {
     namespace = "org.example.project"
@@ -80,6 +87,7 @@ android {
     }
     dependencies {
         debugImplementation(libs.compose.ui.tooling)
+
     }
 }
 

@@ -1,3 +1,4 @@
+import Viewmodel.BoredViewModel
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
@@ -14,26 +15,21 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.painterResource
+@Composable
+fun mainActivity() {
+    var boredViewModel = BoredViewModel()
+    App(boredViewModel)
+}
 
 @OptIn(ExperimentalResourceApi::class)
 @Composable
-fun App() {
+fun App(boredViewModel: BoredViewModel) {
     MaterialTheme {
-        var greetingText by remember { mutableStateOf("Hello World!") }
-        var showImage by remember { mutableStateOf(false) }
         Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
-            Button(onClick = {
-                greetingText = "Compose: ${Greeting().greet()}"
-                showImage = !showImage
-            }) {
-                Text(greetingText)
+            Button(onClick = { boredViewModel.increaseCount() }) {
+                Text("Click me")
             }
-            AnimatedVisibility(showImage) {
-                Image(
-                    painterResource("compose-multiplatform.xml"),
-                    null
-                )
-            }
+            Text(text = "You have clicked the button ${boredViewModel.count} times")
         }
     }
 }
