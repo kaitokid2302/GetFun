@@ -23,13 +23,14 @@ kotlin {
     jvm("desktop")
     
     sourceSets {
-        val ktor_version = "2.3.7"
+//        val ktor_version = "2.3.7"
         val desktopMain by getting
         
         androidMain.dependencies {
             implementation(libs.compose.ui.tooling.preview)
             implementation(libs.androidx.activity.compose)
             implementation(libs.ktor.client.okhttp)
+            implementation(libs.kstore.file)
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -43,14 +44,14 @@ kotlin {
             implementation(libs.ktor.serialization.kotlinx.json)
             implementation(libs.moko.mvvm.core)
             implementation(libs.moko.mvvm.compose)
-            implementation("io.github.xxfast:kstore:0.7.1")
-
-
+            implementation(libs.kstore.file)
+            implementation(libs.kstore)
+            implementation(libs.kamel)
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
             implementation(libs.ktor.client.okhttp)
-
+            implementation(libs.kstore.file)
         }
     }
 }
