@@ -18,6 +18,7 @@ import okio.Path.Companion.toPath
 
 
 class BoredViewModel : ViewModel() {
+
     var screen by mutableStateOf(0)
     var client = HttpClient(){
         install(ContentNegotiation){
@@ -29,4 +30,5 @@ class BoredViewModel : ViewModel() {
         val bored = client.get("http://www.boredapi.com/api/activity/").body<Bored>()
         return bored
     }
+    var count by mutableStateOf(0)
 }

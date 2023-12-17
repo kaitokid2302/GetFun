@@ -20,6 +20,7 @@ ktor = "2.3.6"
 moko-mvvm = "0.16.1"
 kamel = "0.8.3"
 kstore = "0.7.1"
+voyager = "1.0.0"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -48,6 +49,9 @@ kamel = { module = "media.kamel:kamel-image", version.ref = "kamel"}
 kstore = { module = "io.github.xxfast:kstore", version.ref = "kstore" }
 kstore-file = { module = "io.github.xxfast:kstore-file", version.ref = "kstore" }
 kstore-storage = { module = "io.github.xxfast:kstore-storage", version.ref = "kstore" }
+voyager-navigator = { module = "cafe.adriel.voyager:voyager-navigator", version.ref = "voyager" }
+androidx-foundation-layout-android = { group = "androidx.compose.foundation", name = "foundation-layout-android", version = "1.5.4" }
+
 
 
 [plugins]

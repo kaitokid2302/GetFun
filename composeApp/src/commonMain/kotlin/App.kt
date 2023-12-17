@@ -10,37 +10,28 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import dev.icerock.moko.mvvm.compose.getViewModel
+import dev.icerock.moko.mvvm.compose.viewModelFactory
 import io.kamel.image.KamelImage
 import io.kamel.image.asyncPainterResource
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.painterResource
+
+
+var boredViewModel = BoredViewModel()
+
 @Composable
 fun mainActivity() {
-    var boredViewModel = BoredViewModel()
-    App(boredViewModel)
-}
+    LaunchedEffect(boredViewModel){
 
-@OptIn(ExperimentalResourceApi::class)
-@Composable
-fun App(boredViewModel: BoredViewModel) {
-    MaterialTheme {
-        Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
-            // new bored variable will be assing to the result of the function  suspend fun getRandomEvent():
-            // Bored using remember and by mutableStateOf, but at the beginning it will be null
-            var bored by remember { mutableStateOf<Bored?> (null) }
-
-            LaunchedEffect(boredViewModel) {
-                bored = boredViewModel.getRandomEvent()
-            }
-            Text(bored?.activity.toString())
-            Text(bored?.link.toString())
-            Text(getPlatform().name)
-            Image(
-                painter = painterResource("drawable/education.png"),
-                contentDescription = "1"
-            )
-        }
     }
+    if(boredViewModel.screen == 0){
+        HomeScreen()
+    }
+    else if(boredViewModel.screen == 1){
+        BoredScreen()
+    }
+    App(boredViewModel)
 }

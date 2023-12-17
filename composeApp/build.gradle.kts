@@ -47,6 +47,7 @@ kotlin {
             implementation(libs.kstore.file)
             implementation(libs.kstore)
             implementation(libs.kamel)
+            implementation(libs.voyager.navigator)
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
@@ -90,6 +91,9 @@ android {
         debugImplementation(libs.compose.ui.tooling)
 
     }
+}
+dependencies {
+    implementation(libs.androidx.foundation.layout.android)
 }
 
 compose.desktop {
