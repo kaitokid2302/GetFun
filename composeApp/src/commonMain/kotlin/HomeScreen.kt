@@ -21,18 +21,16 @@ import java.lang.reflect.Modifier
 
 @Composable
 fun BeginOfScreen(){
-    Card(modifier = androidx.compose.ui.Modifier.padding(2.dp)){
-        Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center, modifier = androidx.compose.ui.Modifier.fillMaxSize()){
-            Text(text = "Are you bored?", fontWeight = FontWeight.Bold, style = MaterialTheme.typography.h3)
-            Text(text = "Let's find something to do!", fontWeight = FontWeight.Bold)
-        }
+    Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center, modifier = androidx.compose.ui.Modifier.fillMaxSize()){
+        Text(text = "Are you bored?", fontWeight = FontWeight.Bold, style = MaterialTheme.typography.h3)
+        Text(text = "Let's find something to do!", fontWeight = FontWeight.Bold)
     }
 }
 
 
 @Composable
 fun CardEvent(bored: Bored){
-    Card(modifier = androidx.compose.ui.Modifier.padding(2.dp)){
+    Card(modifier = androidx.compose.ui.Modifier.padding(2.dp).height(150.dp)){
         Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center, modifier = androidx.compose.ui.Modifier.fillMaxSize()){
             Row{
                 Icon(
@@ -74,24 +72,24 @@ fun HomeScreen(boredViewModel: BoredViewModel) {
         event = boredViewModel.getRandomEvent()
     }
     MaterialTheme {
-        Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center){
-            Spacer(modifier = androidx.compose.ui.Modifier.weight(1f))
-            BeginOfScreen()
-            Spacer(modifier = androidx.compose.ui.Modifier.weight(0.5f))
-            Text(modifier = androidx.compose.ui.Modifier.align(Alignment.Start), text = "Let's")
-            if(event != null){
-                Text(event!!.activity, fontWeight = FontWeight.Bold, style = MaterialTheme.typography.h3)
-                CardEvent(event!!)
-            }
-            Spacer(modifier = androidx.compose.ui.Modifier.weight(1f))
-            Text("Not satisfied?")
-            Button(onClick = {
-                GlobalScope.launch {
-                    event = boredViewModel.getRandomEvent()
+        Card(modifier = androidx.compose.ui.Modifier.fillMaxSize()){
+            Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center, modifier = androidx.compose.ui.Modifier.fillMaxSize()){
+                BeginOfScreen()
+                Text(modifier = androidx.compose.ui.Modifier.align(Alignment.Start), text = "Let's")
+                if(event != null){
+                    Text(event!!.activity, fontWeight = FontWeight.Bold, style = MaterialTheme.typography.h3)
+                    CardEvent(event!!)
                 }
-            }){
-                Text("Try another one", color = Color.Blue)
+                Text("Not satisfied?")
+                Button(onClick = {
+                    GlobalScope.launch {
+                        event = boredViewModel.getRandomEvent()
+                    }
+                }){
+                    Text("Try another one", color = Color.Blue)
+                }
             }
+
         }
     }
 }
