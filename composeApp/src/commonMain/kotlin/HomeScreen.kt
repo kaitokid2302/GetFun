@@ -21,8 +21,8 @@ import java.lang.reflect.Modifier
 
 @Composable
 fun BeginOfScreen(){
-    Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center, modifier = androidx.compose.ui.Modifier.fillMaxSize()){
-        Text(text = "Are you bored?", fontWeight = FontWeight.Bold, style = MaterialTheme.typography.h3)
+    Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center){
+        Text(text = "Are you bored?", fontWeight = FontWeight.Bold, style = MaterialTheme.typography.h4)
         Text(text = "Let's find something to do!", fontWeight = FontWeight.Bold)
     }
 }
