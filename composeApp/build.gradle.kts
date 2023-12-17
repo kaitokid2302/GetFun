@@ -7,6 +7,7 @@ plugins {
     alias(libs.plugins.jetbrainsCompose)
     alias(libs.plugins.kotlinxSerialization)
     id("kotlin-kapt")
+    id("io.realm.kotlin") version "1.11.0"
 }
 
 kotlin {
@@ -31,6 +32,7 @@ kotlin {
             implementation(libs.androidx.activity.compose)
             implementation(libs.ktor.client.okhttp)
             implementation(libs.kstore.file)
+            implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.0")
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -49,11 +51,16 @@ kotlin {
             implementation(libs.kamel)
             implementation(libs.voyager.navigator)
             implementation(libs.composeIcons.featherIcons)
+            implementation("io.realm.kotlin:library-base:1.11.0")
+            implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.0") // If using coroutines with the SDK
+
+
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
             implementation(libs.ktor.client.okhttp)
             implementation(libs.kstore.file)
+            implementation("org.jetbrains.kotlinx:kotlinx-coroutines-swing:1.7.0")
         }
     }
 }
@@ -90,11 +97,13 @@ android {
     }
     dependencies {
         debugImplementation(libs.compose.ui.tooling)
+        compileOnly("io.realm.kotlin:library-base:1.11.0")
 
     }
 }
 dependencies {
     implementation(libs.androidx.foundation.layout.android)
+    implementation(libs.androidx.foundation.layout.desktop)
 }
 
 compose.desktop {

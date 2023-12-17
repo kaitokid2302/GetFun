@@ -1,13 +1,16 @@
 package Data
 
+import io.realm.kotlin.types.RealmObject
+import io.realm.kotlin.types.annotations.PrimaryKey
 import kotlinx.serialization.Serializable
 @Serializable
-data class Bored(
-    val accessibility: Double,
-    val activity: String,
-    val key: String,
-    val link: String,
-    val participants: Int,
-    val price: Double,
-    val type: String
-)
+class Bored() : RealmObject {
+    var accessibility: Double? = null
+    @PrimaryKey
+    var activity: String? = null
+    var key: String? = null
+    var link: String? = null
+    var participants: Int? = null
+    var price: Double? = null
+    var type: String? = null
+}

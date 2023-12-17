@@ -53,6 +53,7 @@ kstore-storage = { module = "io.github.xxfast:kstore-storage", version.ref = "ks
 voyager-navigator = { module = "cafe.adriel.voyager:voyager-navigator", version.ref = "voyager" }
 composeIcons-featherIcons = { module = "br.com.devsrsouza.compose.icons:feather", version.ref = "composeIcons" }
 androidx-foundation-layout-android = { group = "androidx.compose.foundation", name = "foundation-layout-android", version = "1.5.4" }
+androidx-foundation-layout-desktop = { group = "androidx.compose.foundation", name = "foundation-layout-desktop", version = "1.6.0-beta03" }
 
 
 

@@ -25,12 +25,16 @@ var boredViewModel = BoredViewModel()
 @Composable
 fun mainActivity() {
     LaunchedEffect(boredViewModel){
-        boredViewModel.getAllEventByType()
+        boredViewModel.getAllEventToLoad()
+        boredViewModel.getAllCollection()
     }
     if(boredViewModel.screen == 0){
         HomeScreen(boredViewModel)
     }
     else if(boredViewModel.screen == 1){
         BoredScreen(boredViewModel)
+    }
+    else if(boredViewModel.screen == 2){
+        CollectionScreen(boredViewModel)
     }
 }
