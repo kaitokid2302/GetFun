@@ -37,6 +37,7 @@ kotlin {
             implementation(compose.foundation)
             implementation(compose.material)
             implementation(compose.ui)
+            implementation("br.com.devsrsouza.compose.icons:{ICON_PACK}:1.1.0")
             @OptIn(ExperimentalComposeLibrary::class)
             implementation(compose.components.resources)
             implementation(libs.ktor.client.core)
@@ -48,6 +49,7 @@ kotlin {
             implementation(libs.kstore)
             implementation(libs.kamel)
             implementation(libs.voyager.navigator)
+            implementation(libs.composeIcons.featherIcons)
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)

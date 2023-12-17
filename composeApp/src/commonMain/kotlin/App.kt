@@ -25,13 +25,12 @@ var boredViewModel = BoredViewModel()
 @Composable
 fun mainActivity() {
     LaunchedEffect(boredViewModel){
-
+        boredViewModel.getAllEventByType()
     }
     if(boredViewModel.screen == 0){
-        HomeScreen()
+        HomeScreen(boredViewModel)
     }
     else if(boredViewModel.screen == 1){
-        BoredScreen()
+        BoredScreen(boredViewModel)
     }
-    App(boredViewModel)
 }

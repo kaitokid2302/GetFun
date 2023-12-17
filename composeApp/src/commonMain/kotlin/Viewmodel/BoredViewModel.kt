@@ -18,7 +18,11 @@ import okio.Path.Companion.toPath
 
 
 class BoredViewModel : ViewModel() {
-
+    var type = mutableListOf("education", "recreational", "social", "diy", "charity", "cooking", "relaxation", "music", "busywork")
+    // empty map<string, mutableList> called mapOfType
+    var mapOfType = mutableMapOf<String, MutableList<Bored>>()
+    var beginning = 1000000
+    var n = 1000
     var screen by mutableStateOf(0)
     var client = HttpClient(){
         install(ContentNegotiation){
@@ -30,5 +34,19 @@ class BoredViewModel : ViewModel() {
         val bored = client.get("http://www.boredapi.com/api/activity/").body<Bored>()
         return bored
     }
-    var count by mutableStateOf(0)
+    suspend fun getAllEventByType(){
+        for(type in type){
+            for(i in beginning..beginning+n){
+                val bored = client.get("http://www.boredapi.com/api/activity?type=$type").body<Bored>()
+                if(bored != null){
+                    if(mapOfType.containsKey(type)){
+                        mapOfType[type]?.add(bored)
+                    }
+                    else{
+                        mapOfType[type] = mutableListOf(bored)
+                    }
+                }
+            }
+        }
+    }
 }
